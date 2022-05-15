@@ -1,5 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -25,10 +24,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category="Moving Platform")
 	FVector PlatformVelocity = FVector(0, 100, 0);
-
-	UPROPERTY(VisibleAnywhere, Category="Platform Distance")
-	float DistanceMoved = -1;
+	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	float MovedDistance = 100;
 	
 	FVector StartLocation;
-	
 };

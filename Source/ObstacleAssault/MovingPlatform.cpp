@@ -1,6 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "MovingPlatform.h"
 
 // Sets default values
@@ -33,7 +31,14 @@ void AMovingPlatform::Tick(float DeltaTime)
 	SetActorLocation(CurrentLocation);
 	// Send platform back if gone too far
 		// Check how far we've moved
-	DistanceMoved = FVector::Distance(StartLocation, CurrentLocation);
+	float DistanceMoved = FVector::Distance(StartLocation, CurrentLocation);
 		// Reverse direction of motion if gone too far
+	if (DistanceMoved > MovedDistance)
+	{
+		// preventing to travel past it the same amount as we traveled the other way.
+		StartLocation = CurrentLocation;
+		// reversing direction
+		PlatformVelocity = -PlatformVelocity;
+	}
 }
 
