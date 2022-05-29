@@ -23,15 +23,17 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	UPROPERTY(EditAnywhere, Category="Moving")
 	FVector PlatformVelocity = FVector(0, 100, 0);
-	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	UPROPERTY(EditAnywhere, Category="Moving")
 	float MovedDistance = 100;
+	UPROPERTY(EditAnywhere, Category="Rotation")
+	FRotator RotationVelocity;
 	
 	FVector StartLocation;
 	
 	void MovePlatform(float DeltaTime);
 	void RotatePlatform(float DeltaTime);
-	bool ShouldPlatformReturn();
-	float GetDistanceMoved();
+	bool ShouldPlatformReturn() const;
+	float GetDistanceMoved() const;
 };
