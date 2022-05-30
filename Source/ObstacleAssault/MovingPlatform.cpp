@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 #include "MovingPlatform.h"
 
 // Sets default values
@@ -12,6 +11,7 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
+	
 	StartLocation = GetActorLocation();
 }
 
@@ -19,6 +19,7 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
 	MovePlatform(DeltaTime);
 	RotatePlatform(DeltaTime);
 }
@@ -28,15 +29,15 @@ void AMovingPlatform::MovePlatform(float DeltaTime)
 	if (ShouldPlatformReturn())
 	{
 		FVector MoveDirection = PlatformVelocity.GetSafeNormal();
-		StartLocation += MoveDirection * MovedDistance;
+		StartLocation += (MoveDirection * MovedDistance);
 		SetActorLocation(StartLocation);
-		PlatformVelocity = -PlatformVelocity;
+		PlatformVelocity = -PlatformVelocity; // should be the last
 	}
 	else
 	{
 		FVector CurrentLocation = GetActorLocation();
 		CurrentLocation += (PlatformVelocity * DeltaTime); 
-		SetActorLocation(CurrentLocation);
+		SetActorLocation(CurrentLocation); // should be set last
 	}
 }
 
@@ -44,7 +45,7 @@ void AMovingPlatform::RotatePlatform(float DeltaTime)
 {
 	FRotator CurrentRotation = GetActorRotation();
 	CurrentRotation += (RotationVelocity * DeltaTime);
-	SetActorRotation(CurrentRotation);
+	SetActorRotation(CurrentRotation); // should be the last
 }
 
 bool AMovingPlatform::ShouldPlatformReturn() const

@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 #pragma once
 
 #include "CoreMinimal.h"
@@ -24,9 +23,11 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category="Moving")
-	FVector PlatformVelocity = FVector(0, 100, 0);
+	FVector PlatformVelocity = FVector(0, 500, 0);
+	
 	UPROPERTY(EditAnywhere, Category="Moving")
-	float MovedDistance = 100;
+	float MovedDistance = 500;
+	
 	UPROPERTY(EditAnywhere, Category="Rotation")
 	FRotator RotationVelocity;
 	
